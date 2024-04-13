@@ -188,8 +188,8 @@ const addEditCraft = async (e) => {
         }
 
         await response.json();
-        
-       
+
+
         resetForm();
         clearScreen();
         showCrafts();
@@ -201,9 +201,9 @@ const addEditCraft = async (e) => {
         if (response.status != 200) {
             message.innerHTML = "Error while saving craft.";
             message.style.color = "red";
-          
+
             return;
-          }
+        }
     }
 
 };
@@ -298,5 +298,5 @@ document.getElementById("img").onchange = (e) => {
 };
 
 document.getElementById("img-prev").onerror = function () {
-    this.src = 'http://place-hold.it/200x300';
+    this.src = 'https://place-hold.it/200x300';
 };
