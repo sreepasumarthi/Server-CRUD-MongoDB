@@ -1,6 +1,6 @@
 const getCrafts = async () => {
     try {
-        return (await fetch("https://server-crud-mongodb-fi2u.onrender.com")).json();
+        return (await fetch("https://server-crud-mongodb-fi2u.onrender.com/api/crafts")).json();
     } catch (error) {
         console.log("error retrieving data");
         return "";
@@ -63,7 +63,6 @@ const displayCraftModal = (craft) => {
     populateCraftEditForm(craft);
 };
 
-
 const populateCraftEditForm = (craft) => {
     const form = document.getElementById("craft-form");
     form._id.value = craft._id;
@@ -74,7 +73,6 @@ const populateCraftEditForm = (craft) => {
     populateSupplies(craft.supplies);
 };
 
-
 const populateSupplies = (supplies) => {
     const section = document.getElementById("supply-boxes");
     supplies.forEach((supply) => {
@@ -84,7 +82,6 @@ const populateSupplies = (supplies) => {
         section.append(input);
     });
 };
-
 
 const deleteCraftMethod = async (craft) => {
 
@@ -107,7 +104,6 @@ const deleteCraftMethod = async (craft) => {
 
     let result = await response.json();
 
-    
     resetForm();
     clearScreen();
     showCrafts();
@@ -115,10 +111,8 @@ const deleteCraftMethod = async (craft) => {
 
 };
 
-
 const showCrafts = async () => {
     const craftsJSON = await getCrafts();
-
 
     const columns = document.querySelectorAll(".column");
     if (craftsJSON == "") {
@@ -150,8 +144,6 @@ const showCrafts = async () => {
         }
     });
 };
-
-
 
 // post the craft to the server
 const addEditCraft = async (e) => {
@@ -198,14 +190,13 @@ const addEditCraft = async (e) => {
         showCrafts();
         document.getElementById("dialog").style.display = "none";
         // Call showCrafts only once after adding the craft
-       
+
     }
     catch (error) {
         console.error(error);
     }
 
 };
-
 
 clearScreen = () => {
     let craftsDiv1 = document.getElementById("craft-list-column1");
@@ -231,13 +222,11 @@ const getSupplies = () => {
     return supplies.join(",");
 };
 
-
 document.getElementById("cancel-button").addEventListener("click", (e) => {
     e.preventDefault();
     resetForm();
     document.getElementById("dialog").style.display = "none";
 });
-
 
 const resetForm = () => {
     const form = document.getElementById("craft-form");
@@ -246,7 +235,6 @@ const resetForm = () => {
     document.getElementById("supply-boxes").innerHTML = "";
     document.getElementById("img-prev").src = "";
 };
-
 
 const showAddCraftForm = (e) => {
     e.preventDefault();
@@ -268,7 +256,6 @@ const addSupply = (e) => {
     section.append(input);
 };
 
-
 const openDialog = (id) => {
     document.getElementById("dialog").style.display = "block";
     document.querySelectorAll("#dialog-details > *").forEach((item) => {
@@ -277,14 +264,12 @@ const openDialog = (id) => {
     document.getElementById(id).classList.remove("hidden");
 };
 
-
 // when the server is loaded show all the crafts from server
 showCrafts();
 
 document.getElementById("craft-form").onsubmit = addEditCraft;
 document.getElementById("add-link").onclick = showAddCraftForm;
 document.getElementById("add-supply").onclick = addSupply;
-
 
 document.getElementById("img").onchange = (e) => {
     if (!e.target.files.length) {
@@ -300,7 +285,6 @@ document.getElementById("img").onchange = (e) => {
     };
     reader.readAsDataURL(e.target.files[0]);
 };
-
 
 document.getElementById("img-prev").onerror = function () {
     this.src = 'https://place-hold.it/200x300';
