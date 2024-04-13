@@ -22,7 +22,7 @@ const upload = multer({ storage: storage });
 
 mongoose
     .connect(
-        "mongodb+srv://sreepasumarthi:coolgoal@cluster0.hvvzzie.mongodb.net/"
+        "mongodb+srv://sreepasumarthi:coolstuff@cluster0.hvvzzie.mongodb.net/"
     )
     .then(() => {
         console.log("Successfully connected to mongodb!");

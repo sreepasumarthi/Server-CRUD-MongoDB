@@ -287,5 +287,5 @@ document.getElementById("img").onchange = (e) => {
 };
 
 document.getElementById("img-prev").onerror = function () {
-    this.src = 'https://place-hold.it/200x300';
+    this.src = 'http://place-hold.it/200x300';
 };
