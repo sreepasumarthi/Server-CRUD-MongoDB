@@ -1,6 +1,6 @@
 const getCrafts = async () => {
     try {
-        return (await fetch("https://server-edit-and-delete-0kvg.onrender.com/api/crafts")).json();
+        return (await fetch("https://server-crud-mongodb-fi2u.onrender.com")).json();
     } catch (error) {
         console.log("error retrieving data");
         return "";
@@ -41,7 +41,7 @@ const displayCraftModal = (craft) => {
         modalSupplies.appendChild(listItem);
     });
 
-    modalImage.src = "https://server-edit-and-delete-0kvg.onrender.com/" + craft.img;
+    modalImage.src = "https://server-crud-mongodb-fi2u.onrender.com/" + craft.img;
 
     modal.style.display = "block";
 
@@ -93,7 +93,7 @@ const deleteCraftMethod = async (craft) => {
         return false;
     }
 
-    let response = await fetch(`https://server-edit-and-delete-0kvg.onrender.com/api/crafts/${craft._id}`, {
+    let response = await fetch(`https://server-crud-mongodb-fi2u.onrender.com/api/crafts/${craft._id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json;charset=utf-8"
@@ -136,7 +136,7 @@ const showCrafts = async () => {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
         const img = document.createElement("img");
-        img.src = "https://server-edit-and-delete-0kvg.onrender.com/" + craft.img;
+        img.src = "https://server-crud-mongodb-fi2u.onrender.com/" + craft.img;
         img.alt = craft.name;
         img.addEventListener("click", () => displayCraftModal(craft));
         galleryItem.appendChild(img);
