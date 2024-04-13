@@ -157,6 +157,9 @@ const addEditCraft = async (e) => {
     }
     formData.append("supplies", getSupplies());
 
+    const message = document.getElementById("message")
+
+
     // Add Method
     try {
         if (form._id.value.trim() == "") {
@@ -185,6 +188,8 @@ const addEditCraft = async (e) => {
         }
 
         await response.json();
+        
+       
         resetForm();
         clearScreen();
         showCrafts();
@@ -193,7 +198,12 @@ const addEditCraft = async (e) => {
 
     }
     catch (error) {
-        console.error(error);
+        if (response.status != 200) {
+            message.innerHTML = "Error while saving craft.";
+            message.style.color = "red";
+          
+            return;
+          }
     }
 
 };
@@ -233,6 +243,7 @@ const resetForm = () => {
     form.reset();
     form._id.value = "";
     document.getElementById("supply-boxes").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
     document.getElementById("img-prev").src = "";
 };
 
