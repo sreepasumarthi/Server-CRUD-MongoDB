@@ -30,7 +30,7 @@ mongoose
     .catch((error) => {
         console.log("Sorry, couldn't connect to mongodb.", error);
     });
-    
+
 const craftSchema = new mongoose.Schema({
     name: String,
     description: String,
@@ -134,6 +134,6 @@ function validateCraft(craft) {
     return schema.validate(craft);
 }
 
-app.listen(3000, () => {
+app.listen(3070, () => {
     console.log("I'm listening");
 });
