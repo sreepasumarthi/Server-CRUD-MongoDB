@@ -1,6 +1,6 @@
 const getCrafts = async () => {
     try {
-        return (await fetch("https://server-crud-mongodb-fi2u.onrender.com/api/crafts")).json();
+        return (await fetch("http://localhost:3070/api/crafts")).json();
     } catch (error) {
         console.log("error retrieving data");
         return "";
@@ -41,7 +41,7 @@ const displayCraftModal = (craft) => {
         modalSupplies.appendChild(listItem);
     });
 
-    modalImage.src = "https://server-crud-mongodb-fi2u.onrender.com/" + craft.img;
+    modalImage.src = "http://localhost:3070/" + craft.img;
 
     modal.style.display = "block";
 
@@ -90,7 +90,7 @@ const deleteCraftMethod = async (craft) => {
         return false;
     }
 
-    let response = await fetch(`https://server-crud-mongodb-fi2u.onrender.com/api/crafts/${craft._id}`, {
+    let response = await fetch(`http://localhost:3070/api/crafts/${craft._id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json;charset=utf-8"
@@ -123,14 +123,14 @@ const showCrafts = async () => {
     }
     let columnIndex = 0;
     let columnCount = columns.length;
-    let columnHeights = Array.from(columns).map(() => 0); // Array to store column heights
+    let columnHeights = Array.from(columns).map(() => 0);
 
     craftsJSON.forEach((craft, index) => {
         const shortestColumnIndex = columnHeights.indexOf(Math.min(...columnHeights));
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
         const img = document.createElement("img");
-        img.src = "https://server-crud-mongodb-fi2u.onrender.com/" + craft.img;
+        img.src = "http://localhost:3070/" + craft.img;
         img.alt = craft.name;
         img.addEventListener("click", () => displayCraftModal(craft));
         galleryItem.appendChild(img);
